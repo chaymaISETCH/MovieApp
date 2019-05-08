@@ -1,46 +1,30 @@
+
 import React from "react";
+import withLoading from "./HOC/withLoading"
+
 import Search from "./Search"
 import AddMovie from "./AddMovie"
 import "./Rating.css"
 import MovieCard from "./MovieCard";
-const movieList=[
-    {   name: "Secretly Greatly",
-        year:2013,
-        rating:5,
-        img:"/images/220px-Secretly_Greatly_poster.jpg"
-    },
-    {   name: "My friend is still alive",
-        year:2013,
-        rating:3,
-        img:"/images/My_Friend_is_Still_Alive.jpg"
-    },
-    {   name: "John tucker must die",
-        year:2006,
-        rating:2,
-        img:"/images/french-stream.fr.jpeg"
-    },
-    {   name: "Beauty and the beast",
-        year:1991,
-        rating:5,
-        img:"/images/ob_02e072_la-belle-et-la-bete.jpg"
-    }]
+
 
 export default class MovieList extends React.Component{
     
+    movieList = this.props.data
     constructor(props){
         super(props)
         this.state={
             name:"",
             minRating:0,
-            movieList:movieList
+            movieList:this.movieList
         }
     }
 
     addMovie=(movie)=>{
      
-        movieList.push(movie)
+        this.movieList.push(movie)
         this.setState(state=>{
-            return {movieList : movieList}
+            return {movieList : this.movieList}
         })
     }
     
@@ -56,6 +40,10 @@ export default class MovieList extends React.Component{
             minRating: value
         })
     }
+
+   
+
+ 
 
     render(){
         return (

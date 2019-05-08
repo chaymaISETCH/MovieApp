@@ -15,6 +15,8 @@ export default class AddMovie extends React.Component {
         }
     }
 
+ 
+   handleChange=(e) => { this.setState({ [e.target.name]: e.target.value }) }
     add=() => {
 
         if (this.state.name !== "" && this.state.year !== "" && this.state.img !== "") {
@@ -27,7 +29,11 @@ export default class AddMovie extends React.Component {
         else alert("you must fill all fields")
     }
     show = () => {
-        this.setState({ show: !this.state.show })
+        this.setState({ show: !this.state.show,    
+        name: "",
+        rating: 0,
+        img: "",
+        year: 0 })
     }
     render() {
         return (
@@ -40,13 +46,13 @@ export default class AddMovie extends React.Component {
                         <button onClick={this.show} className="close">x</button>
 
                         Name :
-                            <input type="text" onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} />
+                            <input type="text" name="name" onChange={this.handleChange} value={this.state.name} />
                         Year :
-                            <input type="text" onChange={(e) => { this.setState({ year: e.target.value }) }} value={this.state.year} />
+                            <input type="text" name="year" onChange={this.handleChange} value={this.state.year} />
                         Rate :
-                            <input type="number" onChange={(e) => { this.setState({ rating: e.target.value }) }} value={this.state.rate} />
+                            <input type="number" name="rating" onChange={this.handleChange} value={this.state.rat} />
                         Image :
-                            <input type="text" onChange={(e) => { this.setState({ img: e.target.value }) }} value={this.state.img} />
+                            <input type="text" name="img" onChange={this.handleChange} value={this.state.img} />
                         <button className="add" onClick={this.add}>Add</button>
                     </div>
                 </div>

@@ -7,10 +7,10 @@ const Search=({search, getRating, stars})=>{
         return (
           
                 <div className="searchContainer">
-                    <input  onChange={(e)=>search(e.target.value)} type="search2" placeholder="type movie  name to search" />
+                    <input  onChange={(e)=>search(e.target.value)} type="search" placeholder="type movie  name to search" />
                     <button className="search">Search</button>
                     <Rating stars={stars} getRating={getRating}/>
-                   </div>
+                </div>
                 
     );
 }
